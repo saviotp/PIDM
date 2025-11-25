@@ -1,48 +1,99 @@
 import { House } from 'lucide-react-native';
-import { StyleSheet, View, Text } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome6';
 
-export default function BarraDePesquisa() {
+export default function BarraDeNavegacao({
+    ativo = "buscar",
+    aoPressionarInicio = () => {},
+    aoPressionarBusca = () => {},
+    aoPressionarPerfil = () => {},
+}) {
+
     return (
-        <View style={styles.container}>
-            <View style={styles.icons}>
-                <House style={styles.icon} size={24}/>
-                <Text style={styles.iconText}>Início</Text>
-            </View>
-            <View style={styles.icons}>
-                <FontAwesomeIcon name='magnifying-glass' size={22} style={styles.icon}/>
-                <Text style={styles.iconText}>Buscar</Text>
-            </View>
-            <View style={styles.icons}>
-                <FeatherIcon name='user' size={24} style={styles.icon}/>
-                <Text style={styles.iconText}>Perfil</Text>
-            </View>
+        <View style={estilos.container}>
+
+            {/* INÍCIO */}
+            <Pressable
+                onPress={aoPressionarInicio}
+                style={({ pressed }) => [
+                    estilos.botao,
+                    ativo === "inicio" && estilos.ativo,
+                    pressed && estilos.pressionado,
+                ]}
+            >
+                <House style={estilos.icone} size={24}/>
+                <Text style={estilos.textoIcone}>Início</Text>
+            </Pressable>
+
+            {/* BUSCAR */}
+            <Pressable
+                onPress={aoPressionarBusca}
+                style={({ pressed }) => [
+                    estilos.botao,
+                    ativo === "buscar" && estilos.ativo,
+                    pressed && estilos.pressionado,
+                ]}
+            >
+                <FontAwesomeIcon name="magnifying-glass" size={24} style={estilos.icone}/>
+                <Text style={estilos.textoIcone}>Buscar</Text>
+            </Pressable>
+
+            {/* PERFIL */}
+            <Pressable
+                onPress={aoPressionarPerfil}
+                style={({ pressed }) => [
+                    estilos.botao,
+                    ativo === "perfil" && estilos.ativo,
+                    pressed && estilos.pressionado,
+                ]}
+            >
+                <FeatherIcon name="user" size={24} style={estilos.icone}/>
+                <Text style={estilos.textoIcone}>Perfil</Text>
+            </Pressable>
+
         </View>
-    )
+    );
 }
 
-const styles = StyleSheet.create({
+const estilos = StyleSheet.create({
     container: {
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
         flexDirection: 'row',
         alignItems: 'center',
-        padding: 16,
+        marginTop: 16,
         backgroundColor: '#FFD2B3',
     },
 
-    icons: {
+    botao: {
         justifyContent: 'center',
         alignItems: 'center',
         flex: 1,
         gap: 4,
+        paddingTop: 6,
+        paddingBottom: 6,
     },
 
-    icon: {
+    ativo: {
+        borderTopWidth: 3,
+        borderTopColor: '#AA0000',  // Linha vermelha para indicar a aba atual
+        paddingTop: 3,
+    },
+
+    pressionado: {
+        opacity: 0.6,
+    },
+
+    icone: {
         color: '#AA0000',
     },
 
-    iconText: {
+    textoIcone: {
         color: '#AA0000',
         fontSize: 12,
-    }
-})
+        fontWeight: '600',
+    },
+});
