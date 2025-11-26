@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Pressable, Text, StyleSheet, TextInput, View, BackHandler } from 'react-native';
+import React, { useRef, useState } from 'react';
+import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function BarraDeInput({
     // É o que aparece de base
@@ -19,7 +19,7 @@ export default function BarraDeInput({
     }
 
     return (
-        <Pressable onPress={() => {
+        <Pressable style={styles.container} onPress={() => {
             setEditando(true);
             requestAnimationFrame(() => inputRef.current?.focus());
         }}>
@@ -30,6 +30,7 @@ export default function BarraDeInput({
                         value={value}
                         onChangeText={Digitou}
                         placeholder={label}
+                        onBlur={() => setEditando(false)} // Quando perde o foco, sai do modo de edição
                     />
                 ) : (
                     <Text>{value || label}</Text>
@@ -38,7 +39,6 @@ export default function BarraDeInput({
         </Pressable>
     );
 }
-
 
 const styles = StyleSheet.create({
     container: {
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
         width: '90%',
         alignSelf: 'center',
         alignItems: 'center',
-        gap: 10,
+        marginBottom: 16,
     },
 
     conteudo: {

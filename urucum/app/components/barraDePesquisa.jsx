@@ -59,7 +59,7 @@ export default function BarraDeNavegacao({
 const estilos = StyleSheet.create({
     container: {
         position: 'absolute',
-        bottom: 0,
+        bottom: 48,
         left: 0,
         right: 0,
         flexDirection: 'row',
