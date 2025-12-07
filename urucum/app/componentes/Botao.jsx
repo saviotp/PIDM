@@ -1,15 +1,16 @@
-import { Pressable, Text, StyleSheet } from "react-native";
+import { Pressable, StyleSheet, Text } from "react-native";
 
-export default function Botao({ titulo, aoPressionar }) {
+export default function Botao({ children, aoPressionar, style }) {
     return (
         <Pressable
             onPress={aoPressionar}
             style={({ pressed }) => [
                 styles.botao,
                 pressed && styles.botaoPressed, // Muda cor quando selecionado
+                style, // Custom styles passed as a prop
             ]}
         >
-            <Text style={styles.texto}>{titulo}</Text>
+            <Text style={styles.texto}>{children}</Text>
         </Pressable>
     );
 }
@@ -19,6 +20,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#134313',
         paddingVertical: 10,
         paddingHorizontal: 24,
+        margin: 20,
         borderRadius: 50,
         alignItems: 'center',
         width: '40%',

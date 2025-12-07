@@ -8,10 +8,11 @@ export default function BarraDeNavegacao({
     aoPressionarInicio = () => {},
     aoPressionarBusca = () => {},
     aoPressionarPerfil = () => {},
+    style,
 }) {
 
     return (
-        <View style={estilos.container}>
+        <View style={[estilos.container, style]}>
 
             {/* INÍCIO */}
             <Pressable
