@@ -7,7 +7,7 @@ export default function PaginaLogin() {
     return (
         <View style={estilos.container}>
             <Image 
-                source={require('../../assets/images/logotipo.webp')} 
+                source={require('../assets/images/logotipo.webp')} 
                 style={estilos.logo} 
             />
             <View style={estilos.conteudo}>

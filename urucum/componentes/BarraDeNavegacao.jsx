@@ -13,7 +13,6 @@ export default function BarraDeNavegacao({
 
     return (
         <View style={[estilos.container, style]}>
-
             {/* INÍCIO */}
             <Pressable
                 onPress={aoPressionarInicio}
@@ -52,7 +51,6 @@ export default function BarraDeNavegacao({
                 <FeatherIcon name="user" size={24} style={estilos.icone}/>
                 <Text style={estilos.textoIcone}>Perfil</Text>
             </Pressable>
-
         </View>
     );
 }
@@ -60,15 +58,13 @@ export default function BarraDeNavegacao({
 const estilos = StyleSheet.create({
     container: {
         position: 'absolute',
-        bottom: 48,
+        bottom: 0, // Fixa a barra no final da tela
         left: 0,
         right: 0,
         flexDirection: 'row',
         alignItems: 'center',
-        marginTop: 16,
         backgroundColor: '#FFD2B3',
     },
-
     botao: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -77,21 +73,17 @@ const estilos = StyleSheet.create({
         paddingTop: 6,
         paddingBottom: 6,
     },
-
     ativo: {
         borderTopWidth: 3,
         borderTopColor: '#AA0000',  // Linha vermelha para indicar a aba atual
         paddingTop: 3,
     },
-
     pressionado: {
         opacity: 0.6,
     },
-
     icone: {
         color: '#AA0000',
     },
-
     textoIcone: {
         color: '#AA0000',
         fontSize: 12,

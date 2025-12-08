@@ -1,13 +1,13 @@
 import { Pressable, StyleSheet, Text } from "react-native";
 
-export default function Botao({ children, aoPressionar, style }) {
+export default function Botao({ children, aoPressionar, style, backgroundColor, pressedBackgroundColor }) {
     return (
         <Pressable
             onPress={aoPressionar}
             style={({ pressed }) => [
                 styles.botao,
-                pressed && styles.botaoPressed, // Muda cor quando selecionado
-                style, // Custom styles passed as a prop
+                { backgroundColor: pressed ? pressedBackgroundColor || styles.botaoPressed.backgroundColor : backgroundColor || styles.botao.backgroundColor },
+                style, // Estilos customizáveis via props
             ]}
         >
             <Text style={styles.texto}>{children}</Text>
@@ -17,7 +17,7 @@ export default function Botao({ children, aoPressionar, style }) {
 
 const styles = StyleSheet.create({
     botao: {
-        backgroundColor: '#134313',
+        backgroundColor: '#134313', // Cor padrão do botão
         paddingVertical: 10,
         paddingHorizontal: 24,
         margin: 20,

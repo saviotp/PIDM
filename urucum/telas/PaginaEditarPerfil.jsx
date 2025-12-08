@@ -1,15 +1,16 @@
 import { Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import AdicionarObraOuColecao from '../componentes/AdicionarObraOuColecao';
 import BarraDeInput from '../componentes/BarraDeInput';
+import BarraDeNavegacao from '../componentes/BarraDeNavegacao';
 import Botao from '../componentes/Botao';
 import Titulo from '../componentes/Titulo';
-import AdicionarObraOuColecao from '../componentes/AdicionarObraOuColecao';
 
 export default function PaginaCadastro() {
     return (
-        <ScrollView contentContainerStyle={estilos.scrollContainer}>
-            <View style={estilos.container}>
+        <View style={estilos.container}>
+            <ScrollView contentContainerStyle={estilos.scrollContainer}>
                 <Image
-                    source={require('../../assets/images/logotipo.webp')}
+                    source={require('../assets/images/logotipo.webp')}
                     style={estilos.logo}
                 />
 
@@ -30,7 +31,13 @@ export default function PaginaCadastro() {
 
                     <Titulo color="#134313" style={estilos.titulo}>Luísa Gabriela Nome Gigante</Titulo>
 
-                    <Botao style={estilos.adicionarTags}>Adicionar Tags</Botao>
+                    <Botao 
+                        backgroundColor="#AB8368" 
+                        pressedBackgroundColor="#8B5E4E" 
+                        style={estilos.adicionarTags}
+                    >
+                        Adicionar Tags
+                    </Botao>
 
                     <BarraDeInput label="Escreva sua mini biografia" />
                     <BarraDeInput label="Número para contato" />
@@ -42,19 +49,21 @@ export default function PaginaCadastro() {
                     <Titulo style={estilos.titulo}>Coleções</Titulo>
                     <AdicionarObraOuColecao style={estilos.adicionarObraOuColecao} />
                 </View>
-            </View>
-        </ScrollView>
-
+            </ScrollView>
+            <BarraDeNavegacao ativo="perfil" />
+        </View>
     );
 }
 
 const estilos = StyleSheet.create({
     container: {
         backgroundColor: '#F5F5F5',
+        flex: 1,
     },
     scrollContainer: {
         flexGrow: 1,
         backgroundColor: '#F5F5F5',
+        paddingBottom: 80, // Adds space to prevent content from overlapping the navigation bar
     },
     conteudo: {
         backgroundColor: '#F6F6F6',
@@ -105,7 +114,6 @@ const estilos = StyleSheet.create({
     adicionarTags: {
         marginTop: 10,
         width: '50%',
-        backgroundColor: '#AB8368',
         alignSelf: 'flex-start',
     },
     adicionarObraOuColecao: {

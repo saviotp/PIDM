@@ -8,12 +8,14 @@ import PaginaLogin from "./telas/PaginaLogin";
 import PaginaCadastro from "./telas/PaginaCadastro";
 import PaginaEditarPerfil from "./telas/PaginaEditarPerfil";
 import AdicionarObraOuColecao from "./componentes/AdicionarObraOuColecao";
+import Perfil from "./componentes/Perfil";
+import PaginaInicial from "./telas/PaginaInicial";
 
 
 export default function TelaPrincipal() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <PaginaEditarPerfil />
+      <PaginaInicial />
     </SafeAreaView>
   );
 }
