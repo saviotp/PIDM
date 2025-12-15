@@ -10,12 +10,14 @@ import PaginaEditarPerfil from "./telas/PaginaEditarPerfil";
 import AdicionarObraOuColecao from "./componentes/AdicionarObraOuColecao";
 import Perfil from "./componentes/Perfil";
 import PaginaInicial from "./telas/PaginaInicial";
+import VisualizarObraOuColecao from "./telas/VisualizarObraOuColecao";
+import BotaoVoltar from "./componentes/BotaoVoltar";
 
 
 export default function TelaPrincipal() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <PaginaInicial />
+      <VisualizarObraOuColecao />
     </SafeAreaView>
   );
 }

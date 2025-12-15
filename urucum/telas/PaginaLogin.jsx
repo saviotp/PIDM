@@ -54,3 +54,5 @@ const estilos = StyleSheet.create({
         textDecorationLine: 'underline',
     },
 });
+
+
