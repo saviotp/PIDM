@@ -13,13 +13,17 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "googleServicesFile": "./firebase/GoogleService-Info.plist",
+      "bundleIdentifier": "com.estudiourucum.urucum"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
+      "googleServicesFile": "./firebase/google-services.json",
+      "package": "com.estudiourucum.urucum",
       "edgeToEdgeEnabled": true
     },
     "web": {

@@ -1,37 +1,17 @@
-import { Pressable, StyleSheet, Text } from "react-native";
+import { Pressable, Text } from "react-native";
+import estilosGlobais from "../estilos/estilosGlobais";
 
-export default function Botao({ children, aoPressionar, style, backgroundColor, pressedBackgroundColor }) {
+export default function Botao({ children, style, backgroundColor, pressedBackgroundColor, onPress }) {
     return (
         <Pressable
-            onPress={aoPressionar}
+            onPress={onPress}
             style={({ pressed }) => [
-                styles.botao,
-                { backgroundColor: pressed ? pressedBackgroundColor || styles.botaoPressed.backgroundColor : backgroundColor || styles.botao.backgroundColor },
+                estilosGlobais.botao_botao,
+                { backgroundColor: pressed ? pressedBackgroundColor || estilosGlobais.botao_botaoPressed.backgroundColor : backgroundColor || estilosGlobais.botao_botao.backgroundColor },
                 style, // Estilos customizáveis via props
             ]}
         >
-            <Text style={styles.texto}>{children}</Text>
+            <Text style={estilosGlobais.botao_texto}>{children}</Text>
         </Pressable>
     );
 }
-
-const styles = StyleSheet.create({
-    botao: {
-        backgroundColor: '#134313', // Cor padrão do botão
-        paddingVertical: 10,
-        paddingHorizontal: 24,
-        margin: 20,
-        borderRadius: 50,
-        alignItems: 'center',
-        width: '40%',
-        justifyContent: 'center',
-    },
-    botaoPressed: {
-        backgroundColor: '#096b09ff', // Cor quando selecionado
-    },
-    texto: {
-        color: '#FFFFFF',
-        fontSize: 16,
-        fontWeight: 'bold',
-    },
-});

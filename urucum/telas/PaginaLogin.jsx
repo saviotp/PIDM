@@ -1,58 +1,51 @@
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Image, Pressable, Text, View, KeyboardAvoidingView, ScrollView, Platform, Keyboard } from 'react-native';
+import { useState, useEffect } from 'react';
 import BarraDeInput from '../componentes/BarraDeInput';
 import Botao from '../componentes/Botao';
 import Titulo from '../componentes/Titulo';
+import estilosGlobais from '../estilos/estilosGlobais';
 
-export default function PaginaLogin() {
+export default function PaginaLogin({ navigation }) {
+    const [keyboardVisible, setKeyboardVisible] = useState(false);
+
+    useEffect(() => {
+        const showSubscription = Keyboard.addListener('keyboardDidShow', () => setKeyboardVisible(true));
+        const hideSubscription = Keyboard.addListener('keyboardDidHide', () => setKeyboardVisible(false));
+
+        return () => {
+            showSubscription.remove();
+            hideSubscription.remove();
+        };
+    }, []);
+
     return (
-        <View style={estilos.container}>
-            <Image 
-                source={require('../assets/images/logotipo.webp')} 
-                style={estilos.logo} 
-            />
-            <View style={estilos.conteudo}>
-                <Titulo color="#AA0000">ENTRAR</Titulo>
-                <BarraDeInput label="Usuário ou Email" />
-                <BarraDeInput label="Senha" />
-                <Botao>Entrar</Botao>
-                <Pressable onPress={() => console.log('Esqueceu a senha pressed')}>
-                    <Text style={estilos.link}>Esqueceu a senha?</Text>
-                </Pressable>
-                <Pressable onPress={() => console.log('Cadastre-se pressed')}>
-                    <Text style={estilos.link}>Não possui um login? Cadastre-se</Text>
-                </Pressable>
-            </View>
-        </View>
+        <KeyboardAvoidingView
+            style={estilosGlobais.paginaLogin_container}
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        >
+            <ScrollView contentContainerStyle={estilosGlobais.paginaLogin_scrollContent}>
+                <Image 
+                    source={require('../assets/images/logotipo.webp')} 
+                    style={estilosGlobais.paginaLogin_logo} 
+                />
+                <View style={[
+                    estilosGlobais.paginaLogin_conteudo,
+                    keyboardVisible ? estilosGlobais.paginaLogin_conteudoComTeclado : estilosGlobais.paginaLogin_conteudoSemTeclado
+                ]}>
+                    <Titulo color="#AA0000">ENTRAR</Titulo>
+                    <BarraDeInput label="Usuário ou Email" />
+                    <BarraDeInput label="Senha" />
+                    <Botao onPress={() => navigation.navigate('PaginaEditarPerfil')}>Entrar</Botao>
+                    <Pressable>
+                        <Text style={estilosGlobais.paginaLogin_link}>Esqueceu a senha?</Text>
+                    </Pressable>
+                    <Pressable onPress={() => navigation.navigate('PaginaCadastro')}>
+                        <Text style={estilosGlobais.paginaLogin_link}>Não possui um login? Cadastre-se</Text>
+                    </Pressable>
+                </View>
+            </ScrollView>
+        </KeyboardAvoidingView>
     );
 }
-
-const estilos = StyleSheet.create({
-    container: {
-        backgroundColor: '#FFD2B3',
-        flex: 1,
-    },
-    conteudo: {
-        backgroundColor: '#F6F6F6',
-        height: '55%',
-        width: '90%',
-        borderRadius: 20,
-        alignSelf: 'center',
-        position: 'absolute',
-        bottom: 20,
-        alignItems: 'center',
-        padding: 20,
-    },
-    logo: {
-        width: 100,
-        height: 100,
-        alignSelf: 'center',
-        marginTop: 50,
-    },
-    link: {
-        color: '#004AAD',
-        marginTop: 10,
-        textDecorationLine: 'underline',
-    },
-});
 
 

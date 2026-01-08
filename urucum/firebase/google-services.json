@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "278867216585",
+    "firebase_url": "https://urucum-react-native-project-default-rtdb.firebaseio.com",
+    "project_id": "urucum-react-native-project",
+    "storage_bucket": "urucum-react-native-project.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:278867216585:android:50f486e95560cc0e336518",
+        "android_client_info": {
+          "package_name": "com.estudiourucum.urucum"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvhlG0B3xZpMe-4FK9Kifgmi-RmgRhs1k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

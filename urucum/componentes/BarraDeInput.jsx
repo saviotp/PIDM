@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
-import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Pressable, Text, TextInput, View } from 'react-native';
+import estilosGlobais from '../estilos/estilosGlobais';
 
 export default function BarraDeInput({
     // É o que aparece de base
@@ -19,7 +20,7 @@ export default function BarraDeInput({
     }
 
     return (
-        <Pressable style={styles.container} onPress={() => {
+        <Pressable style={estilosGlobais.barraDeInput_container} onPress={() => {
             setEditando(true);
             requestAnimationFrame(() => inputRef.current?.focus());
         }}>
@@ -39,30 +40,3 @@ export default function BarraDeInput({
         </Pressable>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flexDirection: 'row',
-        backgroundColor: '#EBEBEB',
-        padding: 20,
-        borderRadius: 16,
-        width: '90%',
-        alignSelf: 'center',
-        alignItems: 'center',
-        marginBottom: 16,
-    },
-
-    conteudo: {
-        flex: 1,
-    },
-
-    texto: {
-        fontFamily: 'Inter-Regular',
-        fontSize: 14,
-        color: '#3E3E3E',
-    },
-
-    pressionado: {
-        backgroundColor: '#D3D3D3',
-    },
-});

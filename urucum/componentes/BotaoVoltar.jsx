@@ -1,9 +1,10 @@
 import React from 'react';
-import { StyleSheet, Pressable, Image } from 'react-native';
+import { Pressable, Image } from 'react-native';
+import estilosGlobais from '../estilos/estilosGlobais';
 
-export default function BotaoVoltar({ onPress, style }) {
+export default function BotaoVoltar({ style, onPress }) {
     return (
-        <Pressable onPress={onPress} style={[estilos.botao, style]}>
+        <Pressable style={[estilosGlobais.botaoVoltar_botao, style]} onPress={onPress}>
             <Image
                 source={require('../assets/icons/arrow-left.png')}
                 style={{ width: 24, height: 24 }}
@@ -11,23 +12,3 @@ export default function BotaoVoltar({ onPress, style }) {
         </Pressable>
     );
 }
-
-const estilos = StyleSheet.create({
-    botao: {
-        position: 'absolute',
-        top: 20,
-        left: 20,
-        backgroundColor: '#FFFFFF',
-        borderRadius: 50,
-        alignItems: 'center',
-        width: 60,
-        height: 60,
-        justifyContent: 'center',
-        zIndex: 1000,
-        elevation: 10, // Ensures it stays above other elements on Android
-    },
-    texto: {
-        color: '#FFFFFF',
-        fontWeight: 'bold',
-    },
-});
